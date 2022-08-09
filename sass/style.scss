@@ -36,6 +36,7 @@ body{
     left: 0;
     @include m.mq(tab){
         height: 50px;
+        // flex-direction: column;
     }
 
 }
@@ -86,6 +87,12 @@ body{
 .header-nav{
     display: flex;
     list-style: none;
+    @include m.mq(tab){
+        flex-direction: column;
+        .menu-right{
+            display: none;
+        }
+    }
     a{
         display: flex;
         color: #121212;
@@ -101,18 +108,70 @@ body{
         @include m.mq(pc1260){
             padding: 0 10px;
         }
+        @include m.mq(tab){
+            padding: 10px;
+            height: auto;
+        }
     }
 }
 
 @include m.mq(tab){
     .nav-menu{
         display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        background-color: #FFF;
+    }
+    .nav_btn{
+        position: relative;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        span{
+            content: "";
+            width: 23px;
+            height: 2px;
+            background: #2498B3;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            &::before,&::after{
+                content: "";
+                width: 23px;
+                height: 2px;
+                background: #2498B3;
+                position: absolute;
+            }
+            &::before{
+                transform: translateY(-9px);
+            }
+            &::after{
+                transform: translateY(9px);
+            }
+        }
     }
 }
 
 .first-nav{
     &:hover{
         background-color: #D4F1F8;
+    }
+    @include m.mq(tab){
+        position: relative;
+        &::before,&::after{
+            content: "";
+            width: 23px;
+            height: 2px;
+            background: #121212;
+            position: absolute;
+            top:23px;
+            right: 13px;
+        }
+        &::after{
+            transform: rotate(90deg);
+        }
     }
 }
 .menu-right{
@@ -126,6 +185,10 @@ body{
     display: none;
     background-color:#E9F8FB;
     position: absolute;
+    @include m.mq(tab){
+        position: static;
+        background-color: #FFF;
+    }
     li{
         list-style: none;
         a{
@@ -133,44 +196,53 @@ body{
             font-weight: normal;
             padding: 15px 60px 15px 15px;
             height: auto;
+            @include m.mq(tab){
+                padding: 10px 10px 10px 25px;
+            }
         }
         & :hover{
             color: #2498B3;
             background-color: #FFF;
+            @include m.mq(tab){
+                background-color: #e9f8fb;
+                color: #121212;
+            }
         }
     }
 }
-.ac-menu{
-    width: 50px;
-    @include m.mq(pc){
-        display: none;
-    }
-    &_btn{
+// .ac-menu{
+//     width: 50px;
+//     height: 50px;
+//     @include m.mq(pc){
+//         display: none;
+//     }
+//     &_btn{
         
-        border: solid #2498B3;
-        width: 23px;
-        height: 1px;
-        border-width: thin;
-        position: relative;
-        top:50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        &::before,&::after{
-            content: "";
-            width: 23px;
-            height: 2px;
-            background: #2498B3;
-            position: absolute;
-        }
-        &::before{
-            transform: translate(-1px,-10px);
-            // transform: translateX(1px);
-        }
-        &::after{
-            transform: translate(-1px,8px);
-        }
-    }
-}
+//         border: solid #2498B3;
+//         width: 23px;
+//         height: 1px;
+//         border-width: thin;
+//         position: relative;
+//         top:50%;
+//         left: 50%;
+//         transform: translate(-50%,-50%);
+//         &::before,&::after{
+//             content: "";
+//             width: 23px;
+//             height: 2px;
+//             background: #2498B3;
+//             position: absolute;
+//         }
+//         &::before{
+//             transform: translate(-1px,-10px);
+//             // transform: translateX(1px);
+//         }
+//         &::after{
+//             transform: translate(-1px,8px);
+//         }
+//     }
+// }
+
 
 .page-main{
     padding-top: 70px;
