@@ -94,6 +94,7 @@ body{
         padding: 0 15px;
         height: 70px;
         align-items: center;
+        transition: padding 0.3s;
         @include m.mq(tab){
             height: 50px;
         }
@@ -139,12 +140,44 @@ body{
         }
     }
 }
+.ac-menu{
+    width: 50px;
+    @include m.mq(pc){
+        display: none;
+    }
+    &_btn{
+        
+        border: solid #2498B3;
+        width: 23px;
+        height: 1px;
+        border-width: thin;
+        position: relative;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        &::before,&::after{
+            content: "";
+            width: 23px;
+            height: 2px;
+            background: #2498B3;
+            position: absolute;
+        }
+        &::before{
+            transform: translate(-1px,-10px);
+            // transform: translateX(1px);
+        }
+        &::after{
+            transform: translate(-1px,8px);
+        }
+    }
+}
 
 .page-main{
     padding-top: 70px;
     @include m.mq(tab){
         padding-top: 50px;
     }
+    
 }
 
 .topHead{
@@ -235,7 +268,7 @@ body{
             font-size: 1.8rem;
             display: block;
             padding: 24px 37px;
-            transition:padding-top 2s;
+            transition:padding-top 0.5s;
             @include m.mq(sp){
                 font-size: 1.6rem;
                 padding: 12px 18px;

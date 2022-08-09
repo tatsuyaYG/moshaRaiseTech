@@ -102,6 +102,7 @@ body {
   padding: 0 15px;
   height: 70px;
   align-items: center;
+  transition: padding 0.3s;
 }
 @media screen and (max-width:1200px) {
   .header-nav a {
@@ -147,6 +148,38 @@ body {
 .sub-menu li :hover {
   color: #2498B3;
   background-color: #FFF;
+}
+
+.ac-menu {
+  width: 50px;
+}
+@media screen and (min-width: 1201px) {
+  .ac-menu {
+    display: none;
+  }
+}
+.ac-menu_btn {
+  border: solid #2498B3;
+  width: 23px;
+  height: 1px;
+  border-width: thin;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.ac-menu_btn::before, .ac-menu_btn::after {
+  content: "";
+  width: 23px;
+  height: 2px;
+  background: #2498B3;
+  position: absolute;
+}
+.ac-menu_btn::before {
+  transform: translate(-1px, -10px);
+}
+.ac-menu_btn::after {
+  transform: translate(-1px, 8px);
 }
 
 .page-main {
@@ -254,7 +287,7 @@ body {
   font-size: 1.8rem;
   display: block;
   padding: 24px 37px;
-  transition: all 0.5s;
+  transition: padding-top 0.5s;
 }
 @media screen and (max-width:767px) {
   .topHead_btn a {
