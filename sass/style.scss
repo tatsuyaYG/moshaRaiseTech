@@ -36,7 +36,6 @@ body{
     left: 0;
     @include m.mq(tab){
         height: 50px;
-        // flex-direction: column;
     }
 
 }
@@ -114,15 +113,22 @@ body{
         }
     }
 }
-
-@include m.mq(tab){
-    .nav-menu{
+@include m.mq(pc){
+    .nav_btn{
         display: none;
+    }
+}
+// ハンバーガーボタン
+
+.nav-menu{
+    @include m.mq(tab){
+        // display: none;  この部分はjQueryで実装したので不要になった
         position: absolute;
         left: 0;
         right: 0;
-        background-color: #FFF;
     }
+}
+@include m.mq(tab){
     .nav_btn{
         position: relative;
         width: 50px;
@@ -146,10 +152,23 @@ body{
             }
             &::before{
                 transform: translateY(-9px);
+                transition: 0.2s;
             }
             &::after{
                 transform: translateY(9px);
+                transition: 0.2s;
             }
+            &.open::before{
+                transform: rotate(-45deg);
+                background: #FFF;
+            }
+            &.open::after{
+                transform: rotate(225deg);
+                background: #FFF;
+            }
+        }
+        &.open{
+            background-color: #2498B3;
         }
     }
 }
@@ -157,8 +176,23 @@ body{
 .first-nav{
     &:hover{
         background-color: #D4F1F8;
+        @include m.mq(tab){
+            background-color: #e9f8fb;
+        }
     }
+    // メニューの灰色
     @include m.mq(tab){
+        background-color: #FFF;
+        &.open{
+            background-image: linear-gradient(to left,#f7f7f7 50px,#FFF 50px);
+        }
+    }
+}
+
+
+// サブメニューの＋ボタン
+@include m.mq(tab){
+    .plus{
         position: relative;
         &::before,&::after{
             content: "";
@@ -172,8 +206,13 @@ body{
         &::after{
             transform: rotate(90deg);
         }
+        &.open::after{
+            transform: rotate(0deg);
+        }
     }
 }
+
+// 
 .menu-right{
     background-color: #2498B3;
     a{

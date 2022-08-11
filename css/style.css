@@ -129,14 +129,20 @@ body {
   }
 }
 
+@media screen and (min-width: 1201px) {
+  .nav_btn {
+    display: none;
+  }
+}
 @media screen and (max-width:1200px) {
   .nav-menu {
-    display: none;
     position: absolute;
     left: 0;
     right: 0;
-    background-color: #FFF;
   }
+}
+
+@media screen and (max-width:1200px) {
   .nav_btn {
     position: relative;
     width: 50px;
@@ -162,19 +168,46 @@ body {
   }
   .nav_btn span::before {
     transform: translateY(-9px);
+    transition: 0.2s;
   }
   .nav_btn span::after {
     transform: translateY(9px);
+    transition: 0.2s;
+  }
+  .nav_btn span.open::before {
+    transform: rotate(-45deg);
+    background: #FFF;
+  }
+  .nav_btn span.open::after {
+    transform: rotate(225deg);
+    background: #FFF;
+  }
+  .nav_btn.open {
+    background-color: #2498B3;
   }
 }
 .first-nav:hover {
   background-color: #D4F1F8;
 }
 @media screen and (max-width:1200px) {
+  .first-nav:hover {
+    background-color: #e9f8fb;
+  }
+}
+@media screen and (max-width:1200px) {
   .first-nav {
+    background-color: #FFF;
+  }
+  .first-nav.open {
+    background-image: linear-gradient(to left, #f7f7f7 50px, #FFF 50px);
+  }
+}
+
+@media screen and (max-width:1200px) {
+  .plus {
     position: relative;
   }
-  .first-nav::before, .first-nav::after {
+  .plus::before, .plus::after {
     content: "";
     width: 23px;
     height: 2px;
@@ -183,11 +216,13 @@ body {
     top: 23px;
     right: 13px;
   }
-  .first-nav::after {
+  .plus::after {
     transform: rotate(90deg);
   }
+  .plus.open::after {
+    transform: rotate(0deg);
+  }
 }
-
 .menu-right {
   background-color: #2498B3;
 }
